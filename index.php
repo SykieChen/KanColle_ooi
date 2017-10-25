@@ -13,7 +13,7 @@
 			$upass = base64_decode($_COOKIE["upass"]);
 		}
 		else {
-			header("Location: /ooi/login/");
+			header("Location: ./login/");
 			exit;
 		}
 	}
