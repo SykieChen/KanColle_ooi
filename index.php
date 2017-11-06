@@ -49,10 +49,8 @@
 			    btn.disabled = "";
 			    var str = ifm.contentWindow;
 			    //alert(str.document.body.innerHTML);
-			    ifm.src = "about:blank";
+			    ifm.src = "http://ooi.moe/poi";
 			    ifm.onload = null;
-				
-
 			}
 			pwd.value="";
 			return false; 
