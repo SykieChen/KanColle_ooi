@@ -4,8 +4,8 @@
 	if(isset($_POST["uname"])){
 		$uname = $_POST["uname"];
 		$upass = $_POST["upass"];
-		setcookie("uname", base64_encode($uname));
-		setcookie("upass", base64_encode($upass));
+		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
+		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
 	}
 	else {
 		if (isset($_COOKIE["uname"])){
@@ -45,15 +45,15 @@
 			frm.target = "login_iframe";
 			frm.submit();
 			btn.disabled = "disabled";
-			// ifm.onload = function(){
-			//     btn.disabled = "";
-			//     var str = ifm.contentWindow;
-			//     //alert(str.document.body.innerHTML);
-			//     ifm.src = "about:blank";
-			//     ifm.onload = null;
+			ifm.onload = function(){
+			    btn.disabled = "";
+			    var str = ifm.contentWindow;
+			    //alert(str.document.body.innerHTML);
+			    ifm.src = "about:blank";
+			    ifm.onload = null;
 				
 
-			// }
+			}
 			pwd.value="";
 			return false; 
 		}
