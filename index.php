@@ -1,9 +1,11 @@
 <?php
 	$uname="";
 	$upass="";
+	$login_from_page = false;
 	if(isset($_POST["uname"])){
 		$uname = $_POST["uname"];
 		$upass = $_POST["upass"];
+		$login_from_page = true;
 		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
 		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
 	}
@@ -28,13 +30,17 @@
 </head>
 <body style="margin:0">
 	<iframe id="login_iframe" name="login_iframe" width="800" height="480" frameBorder=0 ></iframe>
-	<form id="login_form" name="login_form" method="post" style="display:none">
+	<form id="login_form" name="login_form" method="post" style="display:none" <?php if ($login_from_page) echo "onload = \"redirect\"" ?>>
 		<input type="hidden" name="login_id" value="<?php echo $uname ?>" />
 		<input type="password" id = "login_pass" name="password" value="<?php echo $upass ?>" />
 		<input type="hidden" name="mode" value="3" />
 		<input type="submit hidden" name="login_submit" id="login_submit" />
 	</form>
 	<script type="text/javascript">
+		function redirect()
+		{
+			window.location.href = "http://ooi.coder17.com";
+		}
 		function login()
 		{
 			var btn = document.getElementById("login_submit");
@@ -45,13 +51,7 @@
 			frm.target = "login_iframe";
 			frm.submit();
 			btn.disabled = "disabled";
-			ifm.onload = function(){
-			    btn.disabled = "";
-			    var str = ifm.contentWindow;
-			    //alert(str.document.body.innerHTML);
-			    ifm.src = "http://ooi.moe/poi";
-			    ifm.onload = null;
-			}
+			
 			pwd.value="";
 			return false; 
 		}
