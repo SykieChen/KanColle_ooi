@@ -29,7 +29,8 @@
 	<title>砍口类</title>
 </head>
 <body style="margin:0">
-	<iframe id="game_frame" name="game_frame" width="900" height="496" frameborder="0" scrolling="no"></iframe>
+	<div id="spacing_top" style="height:16px;"></div>
+	<iframe id="login_frame" name="login_frame" width="800" height="480" frameborder="0" scrolling="no"></iframe>
 	<form id="login_form" name="login_form" method="post" style="display:none" <?php if ($login_from_page) echo "onload = \"redirect\"" ?>>
 		<input type="hidden" name="login_id" value="<?php echo $uname ?>" />
 		<input type="password" id = "login_pass" name="password" value="<?php echo $upass ?>" />
@@ -45,10 +46,10 @@
 		{
 			var btn = document.getElementById("login_submit");
 			var frm = document.getElementById("login_form");
-			var ifm = document.getElementById("game_frame");
+			var ifm = document.getElementById("login_frame");
 			var pwd = document.getElementById("login_pass");
 			frm.action = "http://ooi.moe/";
-			frm.target = "game_frame";
+			frm.target = "login_frame";
 			frm.submit();
 			btn.disabled = "disabled";
 			
