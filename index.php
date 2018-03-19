@@ -55,7 +55,7 @@ function login()
 {
 	var btn = document.getElementById("login_submit");
 	var frm = document.getElementById("login_form");
-	var ifm = document.getElementById("game_frame");
+	var ifm = document.getElementById("load_frame");
 	var pwd = document.getElementById("login_pass");
 	frm.action = "%s";
 	frm.target = "load_frame";
