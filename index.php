@@ -38,8 +38,8 @@
 		// from login page
 		$uname = $_POST["uname"];
 		$upass = $_POST["upass"];
-		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
-		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
+		setcookie("uname", base64_encode($uname));
+		setcookie("upass", base64_encode($upass));
 	
 		// for unknown reason, you have to directly access ooi.moe for once to choose the correct server
 		$get_server_html = <<<HTML
