@@ -43,7 +43,7 @@
 	
 		// for unknown reason, you have to directly access ooi.moe for once to choose the correct server
 		$get_server_html = <<<HTML
-<iframe id="game_frame" name="game_frame" frameborder="0" scrolling="no" sandbox="allow-forms allow-scripts"></iframe>
+<iframe id="load_frame" name="load_frame" frameborder="0" scrolling="no" sandbox="allow-forms allow-scripts"></iframe>
 <form id="login_form" name="login_form" method="post" style="display:none">
 <input type="hidden" name="login_id" value="%s" />
 <input type="password" id = "login_pass" name="password" value="%s" />
@@ -58,7 +58,7 @@ function login()
 	var ifm = document.getElementById("game_frame");
 	var pwd = document.getElementById("login_pass");
 	frm.action = "%s";
-	frm.target = "game_frame";
+	frm.target = "load_frame";
 	frm.submit();
 	btn.disabled = "disabled";
 	ifm.onload = function(){
@@ -85,7 +85,7 @@ HTML;
 			header("Location: ./login/");
 			exit;
 		}
-		
+
 		// login
 		$post = array(
 			'login_id'=>$uname,
@@ -123,15 +123,17 @@ HTML;
 </head>
 <body style="margin:0">
 	<div id="spacing_top" style="height:16px;"></div>
-	<?php
-		if ($bypass) {
-			// first login, use magic page
-			echo($get_server_html);
-		}
-		else {
-			echo($flash);
-		}
-	?>
+	<iframe id="game_frame" name="game_frame" width="800" height="480" frameborder="0" scrolling="no">
+		<?php
+			if ($bypass) {
+				// first login, use magic page
+				echo($get_server_html);
+			}
+			else {
+				echo($flash);
+			}
+		?>
+	</iframe>
 	<div style="display:none">
 		<script src="https://s19.cnzz.com/z_stat.php?id=1265887046&web_id=1265887046" language="JavaScript"></script>
 	</div>
