@@ -123,7 +123,7 @@ HTML;
 </head>
 <body style="margin:0">
 	<div id="spacing_top" style="height:16px;"></div>
-	<iframe id="game_frame" name="game_frame" width="800" height="480" frameborder="0" scrolling="no">
+	<div id="game_frame" name="game_frame" width="800" height="480" frameborder="0" scrolling="no">
 		<?php
 			if ($bypass) {
 				// first login, use magic page
@@ -133,7 +133,7 @@ HTML;
 				echo($flash);
 			}
 		?>
-	</iframe>
+	</div>
 	<div style="display:none">
 		<script src="https://s19.cnzz.com/z_stat.php?id=1265887046&web_id=1265887046" language="JavaScript"></script>
 	</div>
