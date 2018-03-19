@@ -125,6 +125,7 @@ HTML;
 	<?php
 			if ($bypass) {
 				// first login, use magic page
+				// and use magic page to adjust KCV's screen size
 				echo($get_server_html);
 			}
 			else {
