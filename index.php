@@ -41,7 +41,7 @@
 	<form id="login_form" name="login_form" method="post" style="display:none" <?php if ($login_from_page) echo "onload = \"redirect\"" ?>>
 		<input type="hidden" name="login_id" value="<?php echo $uname ?>" />
 		<input type="password" id = "login_pass" name="password" value="<?php echo $upass ?>" />
-		<input type="hidden" name="mode" value="3" />
+		<input type="hidden" name="mode" value="2" />
 		<input type="submit hidden" name="login_submit" id="login_submit" />
 	</form>
 	<script type="text/javascript">
