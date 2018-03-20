@@ -67,12 +67,18 @@
 
 	<article class="weui_article">
         <a href="http://www.coder17.com/">© 2017 Tojo Toshichi</a><br>
-		&nbsp;<h1><i class="weui_icon_success_circle"></i>&nbsp;账号和密码将存储于本机，服务器不保留任何账户信息。<br>服务基于<a href="http://ooi.moe">OOI - 舰娘在线缓存系统</a><br>本服务和 OOI 系统的唯一区别是刷新时会重新登录，与大咪咪游戏页刷新相同。<br>造福201猫灾受害者<br/>
+        &nbsp;<h1><i class="weui_icon_success_circle"></i>&nbsp;账号和密码将存储于本机，服务器不保留任何账户信息。<br>
+        服务基于<a href="http://ooi.moe">OOI - 舰娘在线缓存系统</a><br>
+        本服务和 OOI 系统的唯一区别是刷新时会重新登录，与大咪咪游戏页刷新相同。<br>
+        造福201猫灾受害者<br>
+        还是闭源吧，省得又被针对。<br>
+        反正 flash 版也时日无多了，都是提督，外链我也加了，何必互相为难。<br>
 		<section>
 
         <a href="http://www.coder17.com/">京ICP备你妹</a><br>
         <script src="https://s19.cnzz.com/z_stat.php?id=1265887046&web_id=1265887046" language="JavaScript"></script>
         </section>
+        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&ptype=0&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=6174652641&verifier=757220ef&dpc=1"></iframe>
     </article>
     </body>
 </html>
