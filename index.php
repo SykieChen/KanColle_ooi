@@ -32,7 +32,6 @@
 	$url = "http://ooi.moe/";
 	$urlpoi = $url . "poi";
 	$cookie='';
-	$bypass = false;
 
 	if(isset($_POST["uname"])) {
 		// from login page
@@ -89,7 +88,6 @@ window.onload=login();
 
 HTML;
 		$get_server_html = sprintf($get_server_html, $uname, $upass, $url);
-		$bypass = true;
 	}
 	else {
 		// login
@@ -104,7 +102,8 @@ HTML;
 		$html = l_get($urlpoi, $url);
 
 		if (preg_match('/<embed id=\"externalswf\"(.+?)<\/embed>/',$html,$src)) {
-			$flash = $src[0];
+			$game_frame = "<iframe id=\"game_frame\" name=\"game_frame\" width=\"800\" height=\"480\" frameborder=\"0\" scrolling=\"no\" srcdoc=\"%s\"></iframe>"
+			$flash = sprintf($game_frame, $src[0]);
 		}
 		else {
 			// login error
@@ -129,7 +128,7 @@ HTML;
 </head>
 <body style="margin:0">
 	<?php
-			if ($bypass) {
+			if (!isset($_COOKIE["opened_before"])) {
 				// first login, use magic page
 				// and use magic page to adjust KCV's screen size
 				echo($get_server_html);
