@@ -34,13 +34,30 @@
 	$cookie='';
 	$bypass = false;
 
-	if(isset($_POST["uname"])){
+	if(isset($_POST["uname"])) {
 		// from login page
 		$uname = $_POST["uname"];
 		$upass = $_POST["upass"];
-		setcookie("uname", base64_encode($uname));
-		setcookie("upass", base64_encode($upass));
-	
+		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
+		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
+	}
+	else {
+		// direct load
+		if (isset($_COOKIE["uname"])){
+			$uname = base64_decode($_COOKIE["uname"]);
+			$upass = base64_decode($_COOKIE["upass"]);
+		}
+		else {
+			// no cookie
+			header("Location: ./login/");
+			exit;
+		}
+	}
+
+
+	if(!isset(_COOKIE["opened_before"])){
+		// first time open in this session
+		setcookie("opened_before", true);		// will expire after closing explorer
 		// for unknown reason, you have to directly access ooi.moe for once to choose the correct server
 		$get_server_html = <<<HTML
 <iframe id="game_frame" name="game_frame" width="800" height="480" frameborder="0" scrolling="no" sandbox="allow-forms allow-scripts"></iframe>
@@ -75,17 +92,6 @@ HTML;
 		$bypass = true;
 	}
 	else {
-		// direct load
-		if (isset($_COOKIE["uname"])){
-			$uname = base64_decode($_COOKIE["uname"]);
-			$upass = base64_decode($_COOKIE["upass"]);
-		}
-		else {
-			// no cookie
-			header("Location: ./login/");
-			exit;
-		}
-
 		// login
 		$post = array(
 			'login_id'=>$uname,
