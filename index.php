@@ -39,13 +39,13 @@
 		$upass = $_POST["upass"];
 		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
 		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
-		setcookie("opened_before", false, time()-60*60*24*365-1);		
+		setcookie("opened_before", false);
 	}
 	else {
 		// direct load
 		if (isset($_COOKIE["uname"])){
 			$uname = base64_decode($_COOKIE["uname"]);
-			$upass = base64_decode($_COOKIE["upass"]);
+			$upass = base64_decode($_COOKIE["upass"]);	
 		}
 		else {
 			// no cookie
@@ -55,7 +55,7 @@
 	}
 
 
-	if(!isset($_COOKIE["opened_before"])){
+	if(!$_COOKIE["opened_before"]){
 		// first time open in this session
 		setcookie("opened_before", true);		// will expire after closing explorer
 		// for unknown reason, you have to directly access ooi.moe for once to choose the correct server
@@ -68,6 +68,8 @@
 <input type="submit hidden" name="login_submit" id="login_submit" />
 </form>
 <script type="text/javascript">
+var jumped = false;
+var timer;
 function login()
 {
 	var btn = document.getElementById("login_submit");
@@ -79,10 +81,24 @@ function login()
 	frm.submit();
 	btn.disabled = "disabled";
 	ifm.onload = function(){
-		window.top.location = "/";
+		if (!jumped) {
+			ifm.src = "./adapting.htm";
+			jumped = true;			
+		}
+		else {
+			timer = setInterval("start_game()",1000);
+		}
 	}
 	pwd.value="";
 	return false; 
+}
+function start_game()
+{
+	if (document.body.clientWidth <= 800)
+	{
+		window.top.location = "/";
+		clearInterval(timer);
+	}
 }
 window.onload=login();
 </script>
@@ -128,7 +144,7 @@ HTML;
 </head>
 <body style="margin:0">
 	<?php
-			if (!isset($_COOKIE["opened_before"])) {
+			if (!$_COOKIE["opened_before"]) {
 				// first login, use magic page
 				// and use magic page to adjust KCV's screen size
 				echo($get_server_html);
