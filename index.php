@@ -29,7 +29,8 @@
 	$uname="";
 	$upass="";
 	// define url
-	$url = "http://ooi.moe/";
+	// $url = "http://ooi.moe/";
+	$url = "http://cn.kcwiki.org/";
 	$urlpoi = $url . "poi";
 	$cookie='';
 
