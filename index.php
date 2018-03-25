@@ -55,7 +55,7 @@
 	}
 
 
-	if(!isset(_COOKIE["opened_before"])){
+	if(!isset($_COOKIE["opened_before"])){
 		// first time open in this session
 		setcookie("opened_before", true);		// will expire after closing explorer
 		// for unknown reason, you have to directly access ooi.moe for once to choose the correct server
