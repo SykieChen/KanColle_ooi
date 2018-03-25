@@ -39,6 +39,7 @@
 		$upass = $_POST["upass"];
 		setcookie("uname", base64_encode($uname), time()+60*60*24*365);
 		setcookie("upass", base64_encode($upass), time()+60*60*24*365);
+		setcookie("opened_before", false, time()-60*60*24*365-1);		
 	}
 	else {
 		// direct load
@@ -102,8 +103,7 @@ HTML;
 		$html = l_get($urlpoi, $url);
 
 		if (preg_match('/<embed id=\"externalswf\"(.+?)<\/embed>/',$html,$src)) {
-			$game_frame = "<iframe id=\"game_frame\" name=\"game_frame\" width=\"800\" height=\"480\" frameborder=\"0\" scrolling=\"no\" src=\"javascript: '<body style=\"margin:0\">%s</body>'\"></iframe>";
-			$flash = sprintf($game_frame, $src[0]);
+			$flash = $src[0];
 		}
 		else {
 			// login error
