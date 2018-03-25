@@ -108,7 +108,7 @@ HTML;
 		}
 		else {
 			// login error
-			header("Location: ./login/");
+			header("Location: ./login/?failed=1");
 			exit;
 		}
 	}

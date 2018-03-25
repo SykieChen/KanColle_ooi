@@ -61,11 +61,17 @@
                 });
             })
         </script>
+           
 
 		<input class="weui_btn weui_btn_primary" type="submit" value="登录" id="showLoadingToast"/>
 	</form>		
 
 	<article class="weui_article">
+        <?php
+            if (isset($_GET["failed"])) {
+                echo("<i class=\"weui_icon_warn\"></i>&nbsp;用户名密码错误，请检查咪咪。<br>");
+            }
+        ?>
         <a href="http://www.coder17.com/">© 2017 Tojo Toshichi</a><br>
         &nbsp;<h1><i class="weui_icon_success_circle"></i>&nbsp;账号和密码将存储于本机，服务器不保留任何账户信息。<br>
         服务基于<a href="http://ooi.moe">OOI - 舰娘在线缓存系统</a><br>
