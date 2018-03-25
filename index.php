@@ -102,7 +102,7 @@ HTML;
 		$html = l_get($urlpoi, $url);
 
 		if (preg_match('/<embed id=\"externalswf\"(.+?)<\/embed>/',$html,$src)) {
-			$game_frame = "<iframe id=\"game_frame\" name=\"game_frame\" width=\"800\" height=\"480\" frameborder=\"0\" scrolling=\"no\" srcdoc='<body style="margin:0">%s</body>'></iframe>";
+			$game_frame = "<iframe id=\"game_frame\" name=\"game_frame\" width=\"800\" height=\"480\" frameborder=\"0\" scrolling=\"no\" srcdoc='<body style=\"margin:0\">%s</body>'></iframe>";
 			$flash = sprintf($game_frame, $src[0]);
 		}
 		else {
